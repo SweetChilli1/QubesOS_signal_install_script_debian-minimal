@@ -62,7 +62,7 @@ fi
 PACKAGES=(
   "signal-desktop"
   "qubes-core-agent-networking"
-  "dunst"
+  "xfce4-notifyd"
   "fonts-noto-color-emoji"
 )
 

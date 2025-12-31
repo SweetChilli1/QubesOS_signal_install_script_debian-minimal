@@ -63,11 +63,7 @@ PACKAGES=(
   "qubes-core-agent-networking"
   "xfce4-notifyd"
   "fonts-noto-color-emoji"
-)
-
-PACKAGES_NO_INSTALL_RECOMMENDS=(
-  "pipewire-pulse"
-  "wireplumber"
+  "pipewire-qubes"
 )
 
 echo "Aktualisiere die Paketdatenbank und installiere Pakete..."
@@ -80,12 +76,6 @@ if output=$(apt-get install -y "${PACKAGES[@]}" 2>&1); then
     : # Nichts tun
 else
     errors+=("Fehler beim Installieren der Pakete: $output")
-fi
-if output=$(apt-get install -y --no-install-recommends "${PACKAGES_NO_INSTALL_RECOMMENDS[@]}" 2>&1); then
-    : # Nichts tun
-else
-    errors+=("Fehler beim Installieren der optionalen Pakete: $output")
-fi
 
 # Überprüfen, ob Fehler aufgetreten sind und entsprechende Meldungen ausgeben
 if [ ${#errors[@]} -gt 0 ]; then

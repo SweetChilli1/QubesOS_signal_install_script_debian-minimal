@@ -16,7 +16,7 @@ git clone
    ```
 2. Template klonen:
    ```bash
-   qvm-clone debian-13-minimal debian-11-minimal-signal
+   qvm-clone debian-13-minimal debian-13-minimal-signal
    ```
 3. Root-User starten auf debian-13-minimal debian-11-minimal-signal:
    ```bash

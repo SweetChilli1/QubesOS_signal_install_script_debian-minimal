@@ -1,4 +1,4 @@
-# QubesOS_signal_install_script_debian-minimal
+# Instalations Skript für Debian-minimal Signal Qube
 Schnelles Installations Skript für ein debian-xy-minimal-signal Template aufzusetzten:
 Das Skript muss mit sudo ausgeführt werden.
 

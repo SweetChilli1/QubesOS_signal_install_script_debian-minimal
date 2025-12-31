@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Überprüfen der Root-Rechte
 if [ "$EUID" -ne 0 ]; then
     echo "Bitte als Root oder mit sudo ausführen."

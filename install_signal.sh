@@ -69,9 +69,11 @@ PACKAGES=(
 
 echo "Aktualisiere die Paketdatenbank und installiere Pakete..."
 if output=$(apt-get update 2>&1); then
-    : # Nichts tun
+    echo "Aktualisiere Repositorys"
 else
-    errors+=("Fehler beim Aktualisieren der Paketdatenbank: $output")
+    echo "Fehler beim aktualisieren der Repositorys $output"
+    # errors+=("Fehler beim Aktualisieren der Repositorys: $output")
+    exit 1
 fi
 
 for package in "${PACKAGES[@]}"; do
@@ -80,7 +82,7 @@ for package in "${PACKAGES[@]}"; do
     if output=$(apt-get install -y "${PACKAGES[@]}" 2>&1); then
         echo "${package} erfolgreich installiert."
     else
-        echo "FEHLER beim installieren von ${package}"
+        echo "FEHLER: Installieren von ${package} fehlgeschlagen!"
         errors+=("Fehler beim Installieren von ${package}: $output")
     fi
 done
@@ -96,4 +98,3 @@ else
     # Fertigstellungsmeldung
     echo "Alle Pakete wurden erfolgreich installiert!"
 fi
-

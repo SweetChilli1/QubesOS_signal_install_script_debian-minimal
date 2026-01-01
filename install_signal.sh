@@ -78,7 +78,7 @@ fi
 
 for package in "${PACKAGES[@]}"; do
     echo "--------------------------------------------------------"
-    echo "$Installiere: ${package}..."
+    echo "Installiere: ${package}..."
     if output=$(apt-get install -y "${PACKAGES[@]}" 2>&1); then
         echo "${package} erfolgreich installiert."
     else

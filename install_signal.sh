@@ -64,6 +64,7 @@ PACKAGES=(
   "xfce4-notifyd"
   "fonts-noto-color-emoji"
   "pipewire-qubes"
+  "pacmanfm"
 )
 
 echo "Aktualisiere die Paketdatenbank und installiere Pakete..."

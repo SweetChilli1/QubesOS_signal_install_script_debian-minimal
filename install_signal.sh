@@ -64,7 +64,7 @@ PACKAGES=(
   "xfce4-notifyd"
   "fonts-noto-color-emoji"
   "pipewire-qubes"
-  "pacmanfm"
+  "pcmanfm"
 )
 
 echo "Aktualisiere die Paketdatenbank und installiere Pakete..."
@@ -73,13 +73,21 @@ if output=$(apt-get update 2>&1); then
 else
     errors+=("Fehler beim Aktualisieren der Paketdatenbank: $output")
 fi
-if output=$(apt-get install -y "${PACKAGES[@]}" 2>&1); then
-    : # Nichts tun
-else
-    errors+=("Fehler beim Installieren der Pakete: $output")
+
+for package in "${PACKAGES[@]}"; do
+    echo "--------------------------------------------------------"
+    echo "$Installiere: ${package}..."
+    if output=$(apt-get install -y "${PACKAGES[@]}" 2>&1); then
+        echo "${package} erfolgreich installiert."
+    else
+        echo "FEHLER beim installieren von ${package}"
+        errors+=("Fehler beim Installieren von ${package}: $output")
+    fi
+done
 
 # Überprüfen, ob Fehler aufgetreten sind und entsprechende Meldungen ausgeben
 if [ ${#errors[@]} -gt 0 ]; then
+    echo "-----------------------------------------------------"
     echo "Die folgenden Fehler sind aufgetreten:"
     for error in "${errors[@]}"; do
         echo "- $error"
